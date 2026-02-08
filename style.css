@@ -99,6 +99,70 @@ nav a:hover { color: var(--accent-blue); }
     transition: 0.3s;
 }
 
+/* --- CONTACT SECTION STYLES --- */
+.contact {
+    padding: 80px 10%;
+    background-color: var(--space-black);
+    text-align: center;
+    border-top: 1px solid rgba(56, 182, 255, 0.1);
+}
+
+.contact-subtitle {
+    color: var(--text-gray);
+    margin-bottom: 40px;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.email-link {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.email-link:hover {
+    text-shadow: 0 0 15px var(--accent-blue);
+    letter-spacing: 1px;
+}
+
+.social-links {
+    display: flex;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    color: var(--text-white);
+    transition: 0.3s;
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon:hover {
+    color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(56, 182, 255, 0.3);
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
 .event-card:hover { transform: translateY(-5px); border-color: var(--accent-blue); }
 
 .event-date { color: var(--accent-blue); font-family: 'Orbitron'; font-size: 0.8rem; }
