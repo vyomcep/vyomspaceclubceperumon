@@ -164,6 +164,22 @@ nav a:hover { color: var(--accent-blue); }
     transform: translateY(-5px);
     box-shadow: 0 0 15px rgba(56, 182, 255, 0.3);
 }
+@media (max-width: 768px) {
+    header {
+        padding: 10px 5%;
+    }
+    
+    .club-logo { height: 45px; }
+    .college-logo { height: 35px; }
+    
+    .hero h1 { font-size: 2rem; }
+    
+    nav ul {
+        gap: 15px;
+    }
+    
+    nav a { font-size: 0.7rem; }
+}
 
 /* Smooth Scrolling */
 html {
