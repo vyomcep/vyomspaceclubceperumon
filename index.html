@@ -124,6 +124,7 @@
             border-radius: 30px;
             transition: 0.3s;
             box-shadow: 0 0 15px rgba(56, 182, 255, 0.3);
+            cursor: pointer;
         }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 0 25px var(--accent-blue); }
 
@@ -153,12 +154,28 @@
         .pillar-card:hover { border-color: var(--accent-blue); transform: translateY(-5px); }
         .pillar-card h3 { font-family: 'Orbitron'; margin-bottom: 15px; color: var(--accent-blue); }
 
-        .about { padding: 80px 10%; background-color: var(--deep-blue); display: flex; flex-wrap: wrap; align-items: center; gap: 50px; }
-        .about-content { flex: 2; }
-        .about-image { flex: 1; display: flex; justify-content: center; }
-        .about-image img { max-width: 100%; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); }
+        /* --- ABOUT PAGE STYLES --- */
+        #about-page {
+            display: none;
+            padding: 100px 10%;
+            min-height: 80vh;
+            background-color: var(--deep-blue);
+        }
 
-        /* --- FOUNDER PAGE SECTION --- */
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .about-text-content { flex: 2; min-width: 300px; }
+        .about-image-content { flex: 1; min-width: 300px; text-align: center; }
+        .about-image-content img { max-width: 100%; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+
+        /* --- FOUNDER PAGE STYLES --- */
         #founder-page {
             display: none;
             padding: 100px 10%;
@@ -168,7 +185,7 @@
 
         .founder-container {
             display: flex;
-            flex-direction: column; /* Center everything vertically */
+            flex-direction: column;
             align-items: center;
             text-align: center;
             gap: 40px;
@@ -177,43 +194,19 @@
         }
 
         .founder-photo-circle {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%; /* Makes photo a circle */
+            width: 280px; height: 280px;
+            border-radius: 50%;
             border: 3px solid var(--accent-blue);
             box-shadow: 0 0 30px rgba(56, 182, 255, 0.4);
-            overflow: hidden; /* Clips the image to the circle */
+            overflow: hidden;
             background-color: var(--deep-blue);
         }
 
-        .founder-photo-circle img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensures photo fills the circle properly */
-        }
+        .founder-photo-circle img { width: 100%; height: 100%; object-fit: cover; }
 
-        .founder-info h2 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--accent-blue);
-            font-size: 2.8rem;
-            margin-bottom: 5px;
-        }
-
-        .founder-info .role {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            margin-bottom: 30px;
-            display: block;
-            letter-spacing: 2px;
-        }
-
-        .founder-bio {
-            color: var(--text-gray);
-            font-size: 1.15rem;
-            line-height: 1.8;
-            text-align: justify;
-        }
+        .founder-info h2 { font-family: 'Orbitron', sans-serif; color: var(--accent-blue); font-size: 2.8rem; margin-bottom: 5px; }
+        .founder-info .role { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; color: var(--text-gray); margin-bottom: 30px; display: block; letter-spacing: 2px; }
+        .founder-bio { color: var(--text-gray); font-size: 1.15rem; line-height: 1.8; text-align: justify; }
 
         /* --- CONTACT --- */
         .contact { padding: 80px 10%; text-align: center; border-top: 1px solid rgba(56, 182, 255, 0.1); }
@@ -225,37 +218,21 @@
 
         footer { background: #000; padding: 40px; text-align: center; color: #666; font-size: 0.8rem; }
 
-        /* --- MOBILE REPAIRS --- */
+        /* --- MOBILE --- */
         @media (max-width: 768px) {
             header { padding: 10px 5%; }
             .club-logo { height: 45px; }
             .college-logo { height: 35px; }
-
             .hamburger { display: flex; order: 2; }
-
             nav {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: rgba(5, 5, 5, 0.95);
-                backdrop-filter: blur(20px);
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.4s ease-in-out;
-                border-bottom: 0px solid var(--accent-blue);
+                position: absolute; top: 100%; left: 0; width: 100%;
+                background-color: rgba(5, 5, 5, 0.95); backdrop-filter: blur(20px);
+                max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out;
             }
-
-            nav.active {
-                max-height: 400px;
-                border-bottom: 1px solid var(--accent-blue);
-            }
-
+            nav.active { max-height: 400px; border-bottom: 1px solid var(--accent-blue); }
             nav ul { flex-direction: column; padding: 30px 0; gap: 20px; }
-
             .founder-photo-circle { width: 220px; height: 220px; }
-            .founder-info h2 { font-size: 2rem; }
-            .about { flex-direction: column; text-align: center; }
+            .about-container { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -275,7 +252,7 @@
         <nav id="nav-menu">
             <ul>
                 <li><a onclick="showPage('home')">Home</a></li>
-                <li><a onclick="showPage('home')" href="#about">About</a></li>
+                <li><a onclick="showPage('about')">About</a></li>
                 <li><a onclick="showPage('founder')">Founder</a></li>
                 <li><a onclick="showPage('home')" href="#contact">Contact</a></li>
             </ul>
@@ -291,22 +268,7 @@
             <h1>Vyom Space Club</h1>
             <p>College of Engineering Perumon</p>
             <p style="font-size: 1rem; margin-top: -15px; color: var(--accent-blue); font-family: 'Orbitron';">Exploring the Infinite</p>
-            <a href="#about" class="btn">Start Exploring</a>
-        </section>
-
-        <section id="about" class="about">
-            <div class="about-content">
-                <h2 class="section-title" style="text-align: left;">About Us</h2>
-                <p style="color: var(--text-gray); margin-bottom: 20px;">
-                    Founded on April 7, 2023, <strong>Vyom Space Club</strong> is the premier student-led organization at the <strong>College of Engineering Perumon</strong>.
-                </p>
-                <p style="color: var(--text-gray);">
-                    Our club serves as a collaborative platform for students across all engineering disciplines to explore space science through technical workshops, research initiatives, and observational sessions.
-                </p>
-            </div>
-            <div class="about-image">
-                <img src="vyom.jpeg" alt="Vyom Space Club Logo">
-            </div>
+            <a onclick="showPage('about')" class="btn">Start Exploring</a>
         </section>
 
         <section id="pillars" class="pillars">
@@ -328,10 +290,30 @@
         </section>
     </main>
 
+    <section id="about-page">
+        <div class="about-container">
+            <div class="about-text-content">
+                <h2 class="section-title" style="text-align: left;">About Vyom</h2>
+                <p style="color: var(--text-gray); margin-bottom: 20px; font-size: 1.1rem;">
+                    Founded on April 7, 2023, <strong>Vyom Space Club</strong> is the premier student-led aerospace and astronomy organization at the <strong>College of Engineering Perumon</strong>.
+                </p>
+                <p style="color: var(--text-gray); font-size: 1.1rem;">
+                    Our club serves as a collaborative platform for students across all engineering disciplines to explore space science through technical workshops, research initiatives, and observational sessions. We are committed to empowering our members with the skills required to contribute to the future of space exploration.
+                </p>
+                <br><br>
+                <a onclick="showPage('home')" class="btn">Back to Home</a>
+            </div>
+            <div class="about-image-content">
+                <img src="vyom.jpeg" alt="About Vyom">
+            </div>
+        </div>
+    </section>
+
     <section id="founder-page">
         <div class="founder-container">
             <div class="founder-photo-circle">
-                <img src="founder.jpg" alt="Akshay K"> </div>
+                <img src="founder.jpg" alt="Akshay K">
+            </div>
             <div class="founder-info">
                 <h2>Akshay K</h2>
                 <span class="role">Founder & Visionary</span>
@@ -345,7 +327,7 @@
                     </p>
                 </div>
                 <br><br>
-                <a onclick="showPage('home')" class="btn" style="cursor: pointer;">Back to Home</a>
+                <a onclick="showPage('home')" class="btn">Back to Home</a>
             </div>
         </div>
     </section>
@@ -372,6 +354,7 @@
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
         const homeContent = document.getElementById('home-content');
+        const aboutPage = document.getElementById('about-page');
         const founderPage = document.getElementById('founder-page');
 
         hamburger.addEventListener('click', () => {
@@ -380,18 +363,23 @@
         });
 
         function showPage(page) {
-            if (page === 'founder') {
-                homeContent.style.display = 'none';
+            // Reset all pages to hidden
+            homeContent.style.display = 'none';
+            aboutPage.style.display = 'none';
+            founderPage.style.display = 'none';
+
+            if (page === 'about') {
+                aboutPage.style.display = 'block';
+            } else if (page === 'founder') {
                 founderPage.style.display = 'block';
-                window.scrollTo(0, 0);
             } else {
                 homeContent.style.display = 'block';
-                founderPage.style.display = 'none';
             }
+            
+            window.scrollTo(0, 0);
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
         }
     </script>
-
 </body>
 </html>
