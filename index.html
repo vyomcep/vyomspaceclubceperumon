@@ -48,7 +48,6 @@
         .club-logo { height: 60px; border-radius: 50%; }
         .college-logo { height: 50px; background: white; padding: 2px; border-radius: 4px; }
 
-        /* --- NAVIGATION --- */
         nav ul { list-style: none; display: flex; gap: 30px; }
         nav a {
             color: var(--text-white);
@@ -57,6 +56,7 @@
             font-size: 0.9rem;
             letter-spacing: 1px;
             transition: 0.3s;
+            cursor: pointer;
         }
         nav a:hover { color: var(--accent-blue); }
 
@@ -158,6 +158,59 @@
         .about-image { flex: 1; display: flex; justify-content: center; }
         .about-image img { max-width: 100%; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); }
 
+        /* --- FOUNDER PAGE SECTION --- */
+        #founder-page {
+            display: none; /* Hidden by default */
+            padding: 100px 10%;
+            min-height: 80vh;
+            background-color: var(--space-black);
+        }
+
+        .founder-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .founder-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .founder-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 20px;
+            border: 2px solid var(--accent-blue);
+            box-shadow: 0 0 30px rgba(56, 182, 255, 0.3);
+        }
+
+        .founder-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .founder-info h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-blue);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .founder-info .role {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* --- CONTACT --- */
         .contact { padding: 80px 10%; text-align: center; border-top: 1px solid rgba(56, 182, 255, 0.1); }
         .email-link { font-family: 'Orbitron'; font-size: 1.5rem; color: var(--accent-blue); text-decoration: none; transition: 0.3s; }
         .email-link:hover { text-shadow: 0 0 10px var(--accent-blue); }
@@ -175,7 +228,6 @@
 
             .hamburger { display: flex; order: 2; }
 
-            /* Mobile Dropdown Menu */
             nav {
                 position: absolute;
                 top: 100%;
@@ -203,14 +255,12 @@
 
             nav a { font-size: 1.1rem; }
 
-            /* Hamburger to X Animation */
             .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
             .hamburger.active span:nth-child(2) { opacity: 0; }
             .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
             .about { flex-direction: column; text-align: center; }
-            .about-content { order: 1; }
-            .about-image { order: 2; }
+            .founder-container { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -229,10 +279,10 @@
 
         <nav id="nav-menu">
             <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#pillars">Mission</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a onclick="showPage('home')">Home</a></li>
+                <li><a onclick="showPage('home')" href="#about">About</a></li>
+                <li><a onclick="showPage('founder')">Founder</a></li>
+                <li><a onclick="showPage('home')" href="#contact">Contact</a></li>
             </ul>
         </nav>
 
@@ -241,42 +291,62 @@
         </div>
     </header>
 
-    <section id="hero" class="hero">
-        <h1>Vyom Space Club</h1>
-        <p>College of Engineering Perumon</p>
-        <p style="font-size: 1rem; margin-top: -15px; color: var(--accent-blue); font-family: 'Orbitron';">Exploring the Infinite</p>
-        <a href="#about" class="btn">Start Exploring</a>
-    </section>
+    <main id="home-content">
+        <section id="hero" class="hero">
+            <h1>Vyom Space Club</h1>
+            <p>College of Engineering Perumon</p>
+            <p style="font-size: 1rem; margin-top: -15px; color: var(--accent-blue); font-family: 'Orbitron';">Exploring the Infinite</p>
+            <a href="#about" class="btn">Start Exploring</a>
+        </section>
 
-    <section id="about" class="about">
-        <div class="about-content">
-            <h2 class="section-title" style="text-align: left;">About Us</h2>
-            <p style="color: var(--text-gray); margin-bottom: 20px;">
-                Founded on April 7, 2023, <strong>Vyom Space Club</strong> is the premier student-led aerospace and astronomy organization at the <strong>College of Engineering Perumon</strong>.
-            </p>
-            <p style="color: var(--text-gray);">
-                Our club serves as a collaborative platform for students across all engineering disciplines to explore space science through technical workshops, research initiatives, and observational sessions.
-            </p>
-        </div>
-        <div class="about-image">
-            <img src="vyom.jpeg" alt="Vyom Space Club">
-        </div>
-    </section>
+        <section id="about" class="about">
+            <div class="about-content">
+                <h2 class="section-title" style="text-align: left;">About Us</h2>
+                <p style="color: var(--text-gray); margin-bottom: 20px;">
+                    Founded on April 7, 2023, <strong>Vyom Space Club</strong> is the premier student-led aerospace and astronomy organization at the <strong>College of Engineering Perumon</strong>.
+                </p>
+                <p style="color: var(--text-gray);">
+                    Our club serves as a collaborative platform for students across all engineering disciplines to explore space science through technical workshops, research initiatives, and observational sessions.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="vyom.jpeg" alt="Vyom Space Club">
+            </div>
+        </section>
 
-    <section id="pillars" class="pillars">
-        <h2 class="section-title">Our Pillars</h2>
-        <div class="pillars-grid">
-            <div class="pillar-card">
-                <h3>Astronomy</h3>
-                <p style="color: var(--text-gray);">Observation sessions and stargazing events using campus equipment.</p>
+        <section id="pillars" class="pillars">
+            <h2 class="section-title">Our Pillars</h2>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <h3>Astronomy</h3>
+                    <p style="color: var(--text-gray);">Observation sessions and stargazing events using campus equipment.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>Aerospace</h3>
+                    <p style="color: var(--text-gray);">Workshops on rocketry, satellite design, and propulsion systems.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>Research</h3>
+                    <p style="color: var(--text-gray);">Collaborative technical projects and student-led paper publications.</p>
+                </div>
             </div>
-            <div class="pillar-card">
-                <h3>Aerospace</h3>
-                <p style="color: var(--text-gray);">Workshops on rocketry, satellite design, and propulsion systems.</p>
-            </div>
-            <div class="pillar-card">
-                <h3>Research</h3>
-                <p style="color: var(--text-gray);">Collaborative technical projects and student-led paper publications.</p>
+        </section>
+    </main>
+
+    <section id="founder-page">
+        <div class="founder-container">
+            <div class="founder-image">
+                <img src="founder.jpg" alt="Founder Photo"> </div>
+            <div class="founder-info">
+                <h2>Our Founder</h2>
+                <span class="role">Visionary & Lead</span>
+                <p style="color: var(--text-gray); font-size: 1.1rem;">
+                    Vyom Space Club was envisioned as a sanctuary for curiosity. Our founder established this organization on April 7, 2023, with the goal of making space science accessible to every engineering student at CEP. 
+                    <br><br>
+                    Through leadership and passion, the club has grown from a simple idea into a vibrant community of space enthusiasts and innovators.
+                </p>
+                <br>
+                <a onclick="showPage('home')" class="btn" style="cursor: pointer;">Back to Home</a>
             </div>
         </div>
     </section>
@@ -303,7 +373,8 @@
     <script>
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
-        const navLinks = document.querySelectorAll('nav ul li a');
+        const homeContent = document.getElementById('home-content');
+        const founderPage = document.getElementById('founder-page');
 
         // Toggle mobile menu
         hamburger.addEventListener('click', () => {
@@ -311,13 +382,21 @@
             navMenu.classList.toggle('active');
         });
 
-        // Close menu when a link is clicked
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
+        // Function to switch pages
+        function showPage(page) {
+            if (page === 'founder') {
+                homeContent.style.display = 'none';
+                founderPage.style.display = 'block';
+                window.scrollTo(0, 0);
+            } else {
+                homeContent.style.display = 'block';
+                founderPage.style.display = 'none';
+            }
+            
+            // Close mobile menu after selection
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
     </script>
 
 </body>
