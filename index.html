@@ -160,7 +160,7 @@
 
         /* --- FOUNDER PAGE SECTION --- */
         #founder-page {
-            display: none; /* Hidden by default */
+            display: none;
             padding: 100px 10%;
             min-height: 80vh;
             background-color: var(--space-black);
@@ -168,46 +168,51 @@
 
         .founder-container {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column; /* Center everything vertically */
             align-items: center;
-            justify-content: center;
-            gap: 50px;
-            max-width: 1000px;
+            text-align: center;
+            gap: 40px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .founder-image {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
+        .founder-photo-circle {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%; /* Makes photo a circle */
+            border: 3px solid var(--accent-blue);
+            box-shadow: 0 0 30px rgba(56, 182, 255, 0.4);
+            overflow: hidden; /* Clips the image to the circle */
+            background-color: var(--deep-blue);
         }
 
-        .founder-image img {
+        .founder-photo-circle img {
             width: 100%;
-            max-width: 350px;
-            border-radius: 20px;
-            border: 2px solid var(--accent-blue);
-            box-shadow: 0 0 30px rgba(56, 182, 255, 0.3);
-        }
-
-        .founder-info {
-            flex: 1;
-            min-width: 300px;
+            height: 100%;
+            object-fit: cover; /* Ensures photo fills the circle properly */
         }
 
         .founder-info h2 {
             font-family: 'Orbitron', sans-serif;
             color: var(--accent-blue);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 2.8rem;
+            margin-bottom: 5px;
         }
 
         .founder-info .role {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.1rem;
             color: var(--text-gray);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             display: block;
+            letter-spacing: 2px;
+        }
+
+        .founder-bio {
+            color: var(--text-gray);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            text-align: justify;
         }
 
         /* --- CONTACT --- */
@@ -218,9 +223,9 @@
         .social-icon { color: var(--text-white); border: 1px solid rgba(255,255,255,0.1); padding: 10px; border-radius: 50%; transition: 0.3s; }
         .social-icon:hover { color: var(--accent-blue); border-color: var(--accent-blue); transform: translateY(-5px); }
 
-        footer { background: #000; padding: 40px; text-align: center; color: #666; font-size: 0.9rem; }
+        footer { background: #000; padding: 40px; text-align: center; color: #666; font-size: 0.8rem; }
 
-        /* --- MOBILE REPAIRS & MENU LOGIC --- */
+        /* --- MOBILE REPAIRS --- */
         @media (max-width: 768px) {
             header { padding: 10px 5%; }
             .club-logo { height: 45px; }
@@ -246,21 +251,11 @@
                 border-bottom: 1px solid var(--accent-blue);
             }
 
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                padding: 30px 0;
-                gap: 20px;
-            }
+            nav ul { flex-direction: column; padding: 30px 0; gap: 20px; }
 
-            nav a { font-size: 1.1rem; }
-
-            .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-            .hamburger.active span:nth-child(2) { opacity: 0; }
-            .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-
+            .founder-photo-circle { width: 220px; height: 220px; }
+            .founder-info h2 { font-size: 2rem; }
             .about { flex-direction: column; text-align: center; }
-            .founder-container { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -303,14 +298,14 @@
             <div class="about-content">
                 <h2 class="section-title" style="text-align: left;">About Us</h2>
                 <p style="color: var(--text-gray); margin-bottom: 20px;">
-                    Founded on April 7, 2023, <strong>Vyom Space Club</strong> is the premier student-led aerospace and astronomy organization at the <strong>College of Engineering Perumon</strong>.
+                    Founded on April 7, 2023, <strong>Vyom Space Club</strong> is the premier student-led organization at the <strong>College of Engineering Perumon</strong>.
                 </p>
                 <p style="color: var(--text-gray);">
                     Our club serves as a collaborative platform for students across all engineering disciplines to explore space science through technical workshops, research initiatives, and observational sessions.
                 </p>
             </div>
             <div class="about-image">
-                <img src="vyom.jpeg" alt="Vyom Space Club">
+                <img src="vyom.jpeg" alt="Vyom Space Club Logo">
             </div>
         </section>
 
@@ -335,17 +330,21 @@
 
     <section id="founder-page">
         <div class="founder-container">
-            <div class="founder-image">
-                <img src="founder.jpg" alt="Founder Photo"> </div>
+            <div class="founder-photo-circle">
+                <img src="founder.jpg" alt="Akshay K"> </div>
             <div class="founder-info">
-                <h2>Our Founder</h2>
-                <span class="role">Visionary & Lead</span>
-                <p style="color: var(--text-gray); font-size: 1.1rem;">
-                    Vyom Space Club was envisioned as a sanctuary for curiosity. Our founder established this organization on April 7, 2023, with the goal of making space science accessible to every engineering student at CEP. 
-                    <br><br>
-                    Through leadership and passion, the club has grown from a simple idea into a vibrant community of space enthusiasts and innovators.
-                </p>
-                <br>
+                <h2>Akshay K</h2>
+                <span class="role">Founder & Visionary</span>
+                <div class="founder-bio">
+                    <p>
+                        On April 17, 2023, Akshay K founded the Vyom Space Club with a clear vision: to create a dedicated sanctuary for space science and interdisciplinary engineering. Recognizing that innovation thrives at the intersection of different fields, he established the club to move beyond the classroom and into real-world exploration.
+                    </p>
+                    <br>
+                    <p>
+                        As the driving force behind Vyom, Akshay’s leadership is defined by his commitment to scientific literacy. He has personally pioneered the club’s extensive outreach initiatives, conducting numerous programs in schools to bring the wonders of space technology to younger students. His vision is not just to build rockets or satellites, but to build a community of thinkers who can engineer a smarter, sustainable future.
+                    </p>
+                </div>
+                <br><br>
                 <a onclick="showPage('home')" class="btn" style="cursor: pointer;">Back to Home</a>
             </div>
         </div>
@@ -353,7 +352,6 @@
 
     <section id="contact" class="contact">
         <h2 class="section-title">Mission Control</h2>
-        <p style="color: var(--text-gray); margin-bottom: 15px;">For inquiries and collaborations:</p>
         <a href="mailto:vyomcep@gmail.com" class="email-link">vyomcep@gmail.com</a>
         <div class="social-links">
             <a href="https://www.instagram.com/vyom_cep/" target="_blank" class="social-icon">
@@ -376,13 +374,11 @@
         const homeContent = document.getElementById('home-content');
         const founderPage = document.getElementById('founder-page');
 
-        // Toggle mobile menu
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
 
-        // Function to switch pages
         function showPage(page) {
             if (page === 'founder') {
                 homeContent.style.display = 'none';
@@ -392,8 +388,6 @@
                 homeContent.style.display = 'block';
                 founderPage.style.display = 'none';
             }
-            
-            // Close mobile menu after selection
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
         }
